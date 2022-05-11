@@ -70,6 +70,14 @@ public class MineGrid {
         return adjacentCells;
     }
 
+    public void revealAllBombs(){
+        for (Cell cell:cells){
+            if(cell.getValue() == Cell.BOMB){
+                cell.setRevealed(true);
+            }
+        }
+    }
+
     public int toIndex(int x,int y){
         return x+(y*size);
     }
