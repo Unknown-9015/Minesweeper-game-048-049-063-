@@ -38,6 +38,14 @@ public class MainActivity extends AppCompatActivity implements OnCellClickListen
 
     @Override
     public void cellClick(Cell cell) {
-        Toast.makeText(getApplicationContext(), "Cell clicked", Toast.LENGTH_SHORT).show();
+    game.handleCellClick(cell);
+    mineGridRecyclerAdapter.setCells(game.getMineGrid().getCells());
+
+    if(game.isGameover()){
+        Toast.makeText(getApplicationContext(),"Game is Over", Toast.LENGTH_SHORT).show();;
+        game.getMineGrid().revealAllBombs();
+    }
+
+        mineGridRecyclerAdapter.setCells(game.getMineGrid().getCells());
     }
 }
